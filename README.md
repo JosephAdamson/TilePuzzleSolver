@@ -1,6 +1,6 @@
 # Description
 Implementation of graph search algorithms (A* and IDA*) for popular 
-N-tile sliding puzzle problem, dealing here with puzzles where N is 8, 15.
+N-tile sliding puzzle problem, dealing here with puzzles where N is 8 and 15.
 
 ### 8-Tile Puzzle
 
@@ -15,7 +15,7 @@ Space complexity for A* is exponential in the branching factor
 larger amount of memory the larger N, because of this the more
 memory efficient (linear in depth) IDA* is used for 15-tile
 puzzles. However, even this does not come up with a solution 
-every time. (see TODO)
+every time (60% of test cases) (see TODO).
 
 ## License
 
