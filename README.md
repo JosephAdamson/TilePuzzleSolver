@@ -1,14 +1,14 @@
-#Description
+# Description
 Implementation of graph search algorithms (A* and IDA*) for popular 
 N-tile sliding puzzle problem, dealing here with puzzles where N is 8, 15.
 
-###8-Tile Puzzle
+### 8-Tile Puzzle
 
 A* implementation can solve any 8-tile puzzle in a reasonable time using 
 Manhattan distance heuristic, with the more memory efficient IDA* implementation 
 often generating the solution quicker.
 
-###15-tile Puzzle
+### 15-tile Puzzle
 
 Space complexity for A* is exponential in the branching factor 
 (4 possibilities max for an expanded node) requiring
