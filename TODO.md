@@ -27,3 +27,7 @@
   * The same by 4 x 4 puzzles for IDA* to get
   better gauge of effectiveness (how often will
   it find a solution). 
+  
+  * Need to look at better heuristics for improved
+  IDA* search results
+    * possible linear conflict + manhattan distance.
