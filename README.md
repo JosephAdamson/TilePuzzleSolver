@@ -5,9 +5,11 @@ N-tile sliding puzzle problem, dealing here with puzzles where N is 8 and 15.
 eg.
 
 ```
-  0 1 3	     1 0 3      1 2 3      1 2 3      1 2 3
-  4 2 5	 ->  4 2 5  ->  4 0 5  ->  4 5 0  ->  4 5 6
-  7 8 6	     7 8 6      7 8 6      7 8 0      7 8 0	 
+Initial state                                 Goal state
+
+    0 1 3      1 0 3      1 2 3      1 2 3      1 2 3
+    4 2 5  ->  4 2 5  ->  4 0 5  ->  4 5 0  ->  4 5 6
+    7 8 6      7 8 6      7 8 6      7 8 0      7 8 0	   
   
   Path length: 4 
 ```
