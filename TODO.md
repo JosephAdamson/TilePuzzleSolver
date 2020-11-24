@@ -10,7 +10,7 @@
   * ~~Execute moves (up, down, left, right)~~
   * ~~current state (As dictated by input puzzle).~~
   * ~~coords (x,y) of blank (represented as 0 or _).~~
-  * ~~Compute cost of heuristic function using the ~~manhattan distance~~. 
+  * ~~Compute cost of heuristic function using the manhattan distance~~. 
   * ~~Generate children method~~.
   * ~~Generate path method~~.
   
