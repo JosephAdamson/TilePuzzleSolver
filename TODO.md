@@ -10,7 +10,7 @@
   * ~~Execute moves (up, down, left, right)~~
   * ~~current state (As dictated by input puzzle).~~
   * ~~coords (x,y) of blank (represented as 0 or _).~~
-  * ~~h(node) value (cost of heuristic function) using the ~~manhattan distance~~. 
+  * ~~Compute cost of heuristic function using the ~~manhattan distance~~. 
   * ~~Generate children method~~.
   * ~~Generate path method~~.
   
@@ -18,12 +18,11 @@
 * A* search:  
   * ~~NOTE: The cost of using ordinary A* (memory-wise) is too high, 
   look at Iterative deepening A*~~
-  * Review bugs in IDA* (a rewrite)
-  * thorough testing of final product.
+  * ~~Review bugs in IDA* (a rewrite)~~
   
 * Solution
-  * 3 x 3 puzzle generator to test robustness of 
-  A* algorithm with more variable puzzle combinations.
+  * ~~3 x 3 puzzle generator to test robustness of 
+  A* algorithm with more variable puzzle combinations~~.
   
   * The same by 4 x 4 puzzles for IDA* to get
   better gauge of effectiveness (how often will

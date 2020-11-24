@@ -326,7 +326,7 @@ public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
      * Using this heuristic will ensure the A* search is optimal.
      *
      * Computes the Manhattan distance of the current
-     * state of a puzzle node and it goal state; assumed to
+     * state of a puzzle node and its goal state; assumed to
      * be the tile numbers in ascending order with the blank 
      * coming last
      *
