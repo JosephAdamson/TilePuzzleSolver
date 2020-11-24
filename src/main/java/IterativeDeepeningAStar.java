@@ -83,7 +83,7 @@ public class IterativeDeepeningAStar {
         for (TilePuzzleNode child : children) {
             int boundUpdate = fScoreLimitedSearch(child, g + 1, bound);
 
-            // Make sure to the next smallest f-score of all possible
+            // Make sure to obtain the next smallest f-score of all possible
             // children for the next search step.
             min = Math.min(boundUpdate, min);
             
