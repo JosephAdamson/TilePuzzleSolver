@@ -83,5 +83,9 @@ public class Solver {
     
     
     public static void main(String[] args) {
+        TilePuzzleNode test = new TilePuzzleNode(System.getProperty("user.dir")
+                + "/src/test/testResources/puzzle4.txt");
+        
+        printPath(AStar.AStarSearch(test));
     }
 }
