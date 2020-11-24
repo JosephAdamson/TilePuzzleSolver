@@ -12,8 +12,7 @@ public class IterativeDeepeningAStar {
     private boolean goalFound;
 
     /**
-     * ArrayList that will be used to store the path to the
-     * goal (if found).
+     * Used to store the path to the goal (if found).
      */
     private final ArrayList<TilePuzzleNode> solution;
 
@@ -25,9 +24,9 @@ public class IterativeDeepeningAStar {
     }
 
     /**
-     * Search space is gradually expanded slowly increasing the 
+     * Search space is gradually expanded, slowly increasing the 
      * f-score bound according to the next smallest f-score on the
-     * previous frontier.
+     * frontier.
      *  
      * @param start: the start state (puzzle)
      * @return the path from the start state to the goal state.            
@@ -54,7 +53,7 @@ public class IterativeDeepeningAStar {
 
     /**
      * Expands current node in a depth first search fashion;
-     * search is limited by f-score.
+     * search space is limited by f-score.
      * 
      * @param node: current state.
      * @param g: depth of the node in the search tree/number of 

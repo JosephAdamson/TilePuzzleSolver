@@ -20,13 +20,13 @@ public class AStar {
         // space {child : parent}, also used as a log of visited nodes.
         HashMap<TilePuzzleNode, TilePuzzleNode> predecessor = new HashMap<>();
         
-        // g (the depth of the node in the search space)
+        // g (the depth of the node in the search space).
         HashMap<TilePuzzleNode, Integer> g = new HashMap<>();
         
-        // f(node) = g(node) + h(node)
+        // f(node) = g(node) + h(node).
         HashMap<TilePuzzleNode, Integer> fScore = new HashMap<>();
         
-
+        // Used to enforce order on the basis of f(node).
         Comparator<TilePuzzleNode> comp = new Comparator<TilePuzzleNode>() {
             @Override
             public int compare(TilePuzzleNode a, TilePuzzleNode b) {

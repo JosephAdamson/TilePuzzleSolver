@@ -12,7 +12,8 @@ public class Solver {
      * Reconstructs path from start state to goal state, printing
      * the path to the terminal.
      *
-     * @param solution path to goal state.
+     * @param solution path to goal state and its depth in the search
+     *                 tree.
      */
     public static void printPath(ArrayList<TilePuzzleNode> solution) {
         Collections.reverse(solution);
@@ -26,6 +27,7 @@ public class Solver {
                 System.out.println("    V\n");
             }
         }
+        System.out.printf("Path length: %d", solution.size() -1);
     }
 
     /**
@@ -81,8 +83,5 @@ public class Solver {
     
     
     public static void main(String[] args) {
-        TilePuzzleNode test = generateEightTilePuzzle();
-        System.out.println(test);
-        printPath(AStar.AStarSearch(test));
     }
 }
