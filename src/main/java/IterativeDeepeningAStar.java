@@ -30,8 +30,9 @@ public class IterativeDeepeningAStar {
      * previous frontier.
      *  
      * @param start: the start state (puzzle)
+     * @return the path from the start state to the goal state.            
      */
-    public void IterativeDeepeningSearch(TilePuzzleNode start) {
+    public ArrayList<TilePuzzleNode> IterativeDeepeningSearch(TilePuzzleNode start) {
         
         int bound = start.getHeuristicScore();
         
@@ -40,8 +41,7 @@ public class IterativeDeepeningAStar {
             int boundUpdate = fScoreLimitedSearch(start, 0, bound);
             
             if (goalFound) {
-                AStar.printPath(solution);
-                return; 
+                return solution; 
             }
             
             if (boundUpdate == Integer.MAX_VALUE) {

@@ -12,8 +12,9 @@ public class AStar {
      * A* implementation.
      * 
      * @param start the initial node (puzzle to be solved)
+     * @return the path from the start state to the goal state.
      */
-    public void AStarSearch(TilePuzzleNode start) {
+    public static ArrayList<TilePuzzleNode> AStarSearch(TilePuzzleNode start) {
 
         // Good for re-tracing path from goal to start in the search 
         // space {child : parent}, also used as a log of visited nodes.
@@ -48,8 +49,7 @@ public class AStar {
                     solution.add(backTrace);
                     backTrace = predecessor.get(backTrace);
                 }
-                printPath(solution);
-                return;
+                return solution;
             }
             
             ArrayList<TilePuzzleNode> children = current.generateChildren();
@@ -62,27 +62,6 @@ public class AStar {
                 }
             }
         }
-    }
-    
-    public static void printPath(ArrayList<TilePuzzleNode> solution) {
-        Collections.reverse(solution);
-        for (int i = 0; i < solution.size(); i++) {
-            TilePuzzleNode node = solution.get(i);
-
-            System.out.println(node);
-
-            if (i != solution.size() -1) {
-                System.out.println("    |");
-                System.out.println("    V\n");
-            }
-        }
-    }
-    
-    public static void main(String[] args) {
-        TilePuzzleNode puzzle = new TilePuzzleNode(System.getProperty("user.dir")
-                + "/src/test/testResources/puzzle4.txt");
-        
-        AStar test = new AStar();
-        test.AStarSearch(puzzle);
+        throw new IllegalStateException("Goal node not reachable");
     }
 }

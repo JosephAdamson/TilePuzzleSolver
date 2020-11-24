@@ -28,8 +28,7 @@ public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
      * between the nodes state and the goal state.
      */
     private int heuristicScore;
-
-    private TilePuzzleNode previous;
+    
 
     /**
      * Maximum number of legal moves for a given turn.
@@ -120,10 +119,6 @@ public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
      */
     public int getHeuristicScore() {
         return this.heuristicScore;
-    }
-    
-    public void setPrevious(TilePuzzleNode previous) {
-        this.previous = previous;
     }
     
     /**
@@ -249,7 +244,6 @@ public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
             newState.swapBlank(newState.blankIndexes[0], 
                     newState.blankIndexes[1], nextX, nextY);
             newState.manhattanDistance();
-            newState.setPrevious(this);
             
             return newState;
         }
