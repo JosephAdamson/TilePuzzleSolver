@@ -18,7 +18,7 @@ Initial state                                 Goal state
 
 A* implementation can solve any 8-tile puzzle in a reasonable time using 
 Manhattan distance heuristic, with the more memory efficient IDA* implementation 
-often generating the solution quicker.
+often generating the solution in less time than A*.
 
 ### 15-tile Puzzle
 
