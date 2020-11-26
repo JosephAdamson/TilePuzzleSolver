@@ -321,6 +321,8 @@ class TilePuzzleNodeTest {
     public void generateChildTest1() {
         TilePuzzleNode node = new TilePuzzleNode(System.getProperty("user.dir")
                 + "/src/test/testResources/puzzle1.txt");
+        
+        ManhattanDistance md = new ManhattanDistance();
 
         int[][] slideUp = {
                 {12, 1, 10, 2},
@@ -329,7 +331,6 @@ class TilePuzzleNodeTest {
                 {8, 13, 6, 3}
         };
         TilePuzzleNode sLu = new TilePuzzleNode(slideUp);
-        sLu.manhattanDistance();
         
         int[][] slideDown = {
                 {12, 1, 10, 2},
@@ -338,7 +339,6 @@ class TilePuzzleNodeTest {
                 {8, 0, 6, 3}
         };
         TilePuzzleNode sLd = new TilePuzzleNode(slideDown);
-        sLd.manhattanDistance();
         
         int[][] slideRight = {
                 {12, 1, 10, 2},
@@ -347,7 +347,6 @@ class TilePuzzleNodeTest {
                 {8, 13, 6, 3}
         };
         TilePuzzleNode sLr = new TilePuzzleNode(slideRight);
-        sLr.manhattanDistance();
         
         int[][]slideLeft = {
                 {12, 1, 10, 2},
@@ -356,7 +355,6 @@ class TilePuzzleNodeTest {
                 {8, 13, 6, 3}
         };
         TilePuzzleNode sLl = new TilePuzzleNode(slideLeft);
-        sLl.manhattanDistance();
 
         TilePuzzleNode[] arr = {sLu, sLd, sLr, sLl};
         ArrayList<TilePuzzleNode> expected = new ArrayList<>(Arrays.asList(arr));
@@ -370,7 +368,7 @@ class TilePuzzleNodeTest {
             System.out.println(actual.get(i));
             System.out.println(actual.get(i).getHeuristicScore());
             System.out.println("===================");*/
-            assertTrue(expected.get(i).compareTo(actual.get(i)) == 0);
+            assertEquals(md.estimate(expected.get(i)), md.estimate(actual.get(i)));
         }
     }
 
@@ -384,6 +382,7 @@ class TilePuzzleNodeTest {
     public void generateChildTest2() {
         TilePuzzleNode node = new TilePuzzleNode(System.getProperty("user.dir")
                 + "/src/test/testResources/puzzle2.txt");
+        ManhattanDistance md = new ManhattanDistance();
 
         int[][] slideUp = {
                 {0, 8, 2}, 
@@ -391,7 +390,6 @@ class TilePuzzleNodeTest {
                 {7, 6, 5}
         };
         TilePuzzleNode sLu = new TilePuzzleNode(slideUp);
-        sLu.manhattanDistance();
 
         int[][] slideDown = {
                 {1, 8, 2},
@@ -399,7 +397,6 @@ class TilePuzzleNodeTest {
                 {0, 6, 5}
         };
         TilePuzzleNode sLd = new TilePuzzleNode(slideDown);
-        sLd.manhattanDistance();
 
         int[][] slideRight = {
                 {1, 8, 2},
@@ -407,7 +404,6 @@ class TilePuzzleNodeTest {
                 {7, 6, 5}
         };
         TilePuzzleNode sLr = new TilePuzzleNode(slideRight);
-        sLr.manhattanDistance();
 
         TilePuzzleNode[] arr = {sLu, sLd, sLr};
         ArrayList<TilePuzzleNode> expected = new ArrayList<>(Arrays.asList(arr));
@@ -415,7 +411,7 @@ class TilePuzzleNodeTest {
         ArrayList<TilePuzzleNode> actual = node.generateChildren();
 
         for (int i = 0; i < actual.size(); i++) {
-            assertTrue(expected.get(i).compareTo(actual.get(i)) == 0);
+            assertEquals(md.estimate(expected.get(i)), md.estimate(actual.get(i)));
         }
     }
 
@@ -457,46 +453,5 @@ class TilePuzzleNodeTest {
         TilePuzzleNode one = new TilePuzzleNode(stateOne);
         TilePuzzleNode two = new TilePuzzleNode(stateTwo);
         assertTrue(one.equals(two));
-    }
-
-    /**
-     * Testing out the compare to method using a priority queue.
-     */
-    @Test
-    public void compareToTest() {
-        int[][] one = {
-                {2, 1, 3},
-                {5, 4, 0},
-                {6, 7, 8}
-        };
-        TilePuzzleNode nodeOne = new TilePuzzleNode(one);
-        nodeOne.manhattanDistance();
-        System.out.println(nodeOne.getHeuristicScore());
-        
-        int[][] two = {
-                {2, 1, 0},
-                {5, 4, 3},
-                {6, 7, 8},
-        };
-        TilePuzzleNode nodeTwo = new TilePuzzleNode(two);
-        nodeTwo.manhattanDistance();
-        System.out.println(nodeTwo.getHeuristicScore());
-        
-        int[][] three = {
-                {6, 4, 7},
-                {8, 5, 0},
-                {3, 2, 1}
-        };
-        TilePuzzleNode nodeThree = new TilePuzzleNode(three);
-        nodeThree.manhattanDistance();
-        System.out.println(nodeThree.getHeuristicScore());
-
-        PriorityQueue<TilePuzzleNode> q = new PriorityQueue<>();
-
-        Iterator<TilePuzzleNode> iter = q.iterator();
-        while(iter.hasNext()) {
-            System.out.println(iter.next().getHeuristicScore());
-        }
-        
     }
 }

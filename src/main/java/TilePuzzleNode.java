@@ -6,7 +6,7 @@ import java.util.*;
  * @author Joseph Adamson
  * @version October 2020
  */
-public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
+public class TilePuzzleNode {
     /**
      * The width a height of the puzzle board.
      */
@@ -22,12 +22,6 @@ public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
      * an (x, y) pair.
      */
     private int[] blankIndexes;
-
-    /**
-     * Heuristic score; calculated by the comparing the Manhattan distance
-     * between the nodes state and the goal state.
-     */
-    private int heuristicScore;
     
 
     /**
@@ -70,7 +64,7 @@ public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
                 this.state = candidateBoard;
                 this.blankIndexes = findBlank(candidateBoard);
                 this.dimensions = n;
-                manhattanDistance();
+                // manhattanDistance();
             } else {
                 throw new IllegalArgumentException("Input error: puzzle not solvable");
             }
@@ -112,30 +106,6 @@ public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
      */
     public int getDimensions() {
         return this.dimensions;
-    }
-
-    /**
-     * @return heuristic score.
-     */
-    public int getHeuristicScore() {
-        return this.heuristicScore;
-    }
-    
-    /**
-     * Enables the comparison of to puzzle nodes.
-     * 
-     * @param other: the other node
-     * @return {0, 1, -1} depending on the comparison.
-     */
-    @Override
-    public int compareTo(TilePuzzleNode other) {
-        if (this.heuristicScore > other.heuristicScore) {
-            return 1;
-        } else if (this.heuristicScore < other.heuristicScore) {
-            return -1;
-        } else {
-            return 0;
-        }
     }
 
     /**
@@ -243,7 +213,7 @@ public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
             TilePuzzleNode newState = new TilePuzzleNode(cloned);
             newState.swapBlank(newState.blankIndexes[0], 
                     newState.blankIndexes[1], nextX, nextY);
-            newState.manhattanDistance();
+            //newState.manhattanDistance();
             
             return newState;
         }
@@ -314,47 +284,6 @@ public class TilePuzzleNode implements Comparable<TilePuzzleNode>{
             }
         }
         return children;
-    }
-    
-
-    /**
-     * <pre>
-     * The Manhattan distance doesn't overestimate the cost to getting
-     * to the goal state because every tile will have to be moved at least 
-     * the number of spots in between itself and its correct position 
-     * (ref: https://en.wikipedia.org/wiki/Admissible_heuristic#:~:text=The%20Manhattan%20distance%20is%20an,itself%20and%20its%20correct%20position.)
-     * Using this heuristic will ensure the A* search is optimal.
-     *
-     * Computes the Manhattan distance of the current
-     * state of a puzzle node and its goal state; assumed to
-     * be the tile numbers in ascending order with the blank 
-     * coming last
-     *
-     * e.g 
-     *      7 2 4        1 2 3
-     *      5 0 6   ->   4 5 6 
-     *      8 3 1        7 8 0
-     *
-     * </pre>
-     */
-    public void manhattanDistance() {
-        int count = 0;
-
-        for (int i = 0; i < state.length; i++) {
-            for (int j = 0; j < state[i].length; j++) {
-                int val = state[i][j];
-
-                if (val != 0) {
-
-                    // The index position of the value in the goal state.
-                    int goalX = (val - 1) / state.length;
-                    int goalY = (val - 1) % state.length;
-
-                    count += (Math.abs(goalX - i) + Math.abs(goalY - j));
-                }
-            }
-        }
-        this.heuristicScore = count;
     }
 
     /**

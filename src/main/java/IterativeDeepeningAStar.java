@@ -17,10 +17,17 @@ public class IterativeDeepeningAStar {
     private final ArrayList<TilePuzzleNode> solution;
 
     /**
-     * Basic constructor.
+     * Heuristic function to inform the search.
      */
-    public IterativeDeepeningAStar(){
+    private final Heuristic heuristic;
+
+    /**
+     * @param heuristic: search heuristic of choice.
+     */
+    public IterativeDeepeningAStar(Heuristic heuristic){
+        
         this.solution = new ArrayList<>();
+        this.heuristic = heuristic;
     }
 
     /**
@@ -33,7 +40,7 @@ public class IterativeDeepeningAStar {
      */
     public ArrayList<TilePuzzleNode> IterativeDeepeningSearch(TilePuzzleNode start) {
         
-        int bound = start.getHeuristicScore();
+        int bound = heuristic.estimate(start);
         
         while(true) {
             
@@ -65,13 +72,13 @@ public class IterativeDeepeningAStar {
      */
     private int fScoreLimitedSearch(TilePuzzleNode node, int g, int bound) {
         
-        int f = g + node.getHeuristicScore();
+        int f = g + heuristic.estimate(node); 
         
         if (f > bound) {
             return f;
         }
         
-        if (node.getHeuristicScore() == 0) {
+        if (heuristic.estimate(node) == 0) {
             goalFound = true;
             solution.add(node);
             return 0;
@@ -82,15 +89,15 @@ public class IterativeDeepeningAStar {
         ArrayList<TilePuzzleNode> children = node.generateChildren();
         for (TilePuzzleNode child : children) {
             int boundUpdate = fScoreLimitedSearch(child, g + 1, bound);
-
-            // Make sure to obtain the next smallest f-score of all possible
-            // children for the next search step.
-            min = Math.min(boundUpdate, min);
             
             if (goalFound) {
                 solution.add(node);
                 return 0;
             }
+
+            // Make sure to obtain the next smallest f-score of all possible
+            // children for the next search step.
+            min = Math.min(boundUpdate, min);
         }
         return min;
     }

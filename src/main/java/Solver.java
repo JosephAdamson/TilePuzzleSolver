@@ -54,7 +54,6 @@ public class Solver {
             shuffleBoard(arr);
         }
         TilePuzzleNode result = new TilePuzzleNode(arr);
-        result.manhattanDistance();
         return result;
     }
 
@@ -81,11 +80,9 @@ public class Solver {
             }
     }
     
-    
     public static void main(String[] args) {
-        TilePuzzleNode test = new TilePuzzleNode(System.getProperty("user.dir")
-                + "/src/test/testResources/puzzle4.txt");
+        AStar aStar = new AStar(new ManhattanDistance());
         
-        printPath(AStar.AStarSearch(test));
+        
     }
 }

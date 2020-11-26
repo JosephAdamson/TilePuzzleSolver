@@ -9,12 +9,24 @@ import java.util.*;
 public class AStar {
 
     /**
+     * Heuristic function to inform the search.
+     */
+    private final Heuristic heuristic;
+
+    /**
+     * @param heuristic search heuristic of choice.
+     */
+    public AStar(Heuristic heuristic) {
+        this.heuristic = heuristic;
+    }
+
+    /**
      * A* implementation.
      * 
      * @param start the initial node (puzzle to be solved)
      * @return the path from the start state to the goal state.
      */
-    public static ArrayList<TilePuzzleNode> AStarSearch(TilePuzzleNode start) {
+    public ArrayList<TilePuzzleNode> search(TilePuzzleNode start) {
 
         // Good for re-tracing path from goal to start in the search 
         // space {child : parent}, also used as a log of visited nodes.
@@ -33,15 +45,15 @@ public class AStar {
                 return fScore.get(a) - fScore.get(b);
             }
         };
-        PriorityQueue<TilePuzzleNode> toVisit = new PriorityQueue<>(comp);
+        PriorityQueue<TilePuzzleNode> toVisit = new PriorityQueue<>(10000, comp);
 
         g.put(start, 0);
-        fScore.put(start, start.getHeuristicScore());
+        fScore.put(start, heuristic.estimate(start));
         toVisit.add(start);
         while (!(toVisit.isEmpty())) {
             TilePuzzleNode current = toVisit.poll();
             
-            if (current.getHeuristicScore() == 0) {
+            if (fScore.get(current) - g.get(current) == 0) {
                 ArrayList<TilePuzzleNode> solution = new ArrayList<>();
                 
                 TilePuzzleNode backTrace = current;
@@ -57,7 +69,7 @@ public class AStar {
                 if (!(predecessor.containsKey(child))) {
                     predecessor.put(child, current);
                     g.put(child, g.get(current) + 1);
-                    fScore.put(child, g.get(child) + child.getHeuristicScore());
+                    fScore.put(child, g.get(child) + heuristic.estimate(child));
                     toVisit.add(child);
                 }
             }
