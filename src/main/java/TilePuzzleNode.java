@@ -319,7 +319,7 @@ public class TilePuzzleNode {
     }
 
     /**
-     * @return board state in human readable format.
+     * @return board state in human-readable format.
      */
     @Override
     public String toString() {
