@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Conventional A* search, can solve any 8 tile puzzle.
+ * Conventional A* search.
  * 
  * @author Joseph Adamson
  * @version November
