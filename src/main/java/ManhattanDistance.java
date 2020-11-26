@@ -4,16 +4,12 @@ public class ManhattanDistance implements Heuristic {
 
     /**
      * <pre>
-     * The Manhattan distance doesn't overestimate the cost to getting
-     * to the goal state because every tile will have to be moved at least 
-     * the number of spots in between itself and its correct position 
-     * (ref: https://en.wikipedia.org/wiki/Admissible_heuristic#:~:text=The%20Manhattan%20distance%20is%20an,itself%20and%20its%20correct%20position.)
-     * Using this heuristic will ensure the A* search is optimal.
+     * The Manhattan distance doesn't overestimate the cost to getting to the goal state 
+     * because every tile will have to be moved at least the number of spots in between itself
+     * and its correct position Using this heuristic will ensure the A* search is optimal.
      *
-     * Computes the Manhattan distance of the current
-     * state of a puzzle node and its goal state; assumed to
-     * be the tile numbers in ascending order with the blank 
-     * coming last
+     * Computes the Manhattan distance of the current state of a puzzle node and its goal state; 
+     * assumed to be the tile numbers in ascending order with the blank coming last
      *
      * e.g 
      *      7 2 4        1 2 3
