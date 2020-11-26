@@ -64,7 +64,6 @@ public class TilePuzzleNode {
                 this.state = candidateBoard;
                 this.blankIndexes = findBlank(candidateBoard);
                 this.dimensions = n;
-                // manhattanDistance();
             } else {
                 throw new IllegalArgumentException("Input error: puzzle not solvable");
             }
@@ -213,7 +212,6 @@ public class TilePuzzleNode {
             TilePuzzleNode newState = new TilePuzzleNode(cloned);
             newState.swapBlank(newState.blankIndexes[0], 
                     newState.blankIndexes[1], nextX, nextY);
-            //newState.manhattanDistance();
             
             return newState;
         }
