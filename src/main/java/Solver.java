@@ -79,10 +79,4 @@ public class Solver {
                 }
             }
     }
-    
-    public static void main(String[] args) {
-        AStar aStar = new AStar(new ManhattanDistance());
-        
-        
-    }
 }
