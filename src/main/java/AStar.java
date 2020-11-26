@@ -14,7 +14,7 @@ public class AStar {
     private final Heuristic heuristic;
 
     /**
-     * @param heuristic search heuristic of choice.
+     * @param heuristic: search heuristic of choice.
      */
     public AStar(Heuristic heuristic) {
         this.heuristic = heuristic;
@@ -23,7 +23,7 @@ public class AStar {
     /**
      * A* implementation.
      * 
-     * @param start the initial node (puzzle to be solved)
+     * @param start: the initial node (puzzle to be solved)
      * @return the path from the start state to the goal state.
      */
     public ArrayList<TilePuzzleNode> search(TilePuzzleNode start) {
