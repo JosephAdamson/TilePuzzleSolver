@@ -1,5 +1,5 @@
 # Description
-Implementation of graph search algorithms (A* and IDA*) for popular 
+Implementation of heuristic-informed graph search algorithms (A* and IDA*) for popular 
 N-tile sliding puzzle problem, dealing here with puzzles where N is 8 and 15.
 
 eg.
@@ -14,20 +14,46 @@ Initial state                                 Goal state
   Path length: 4 
 ```
 
-### 8-Tile Puzzle
+### Checking if a puzzle is solvable
 
-A* implementation can solve any 8-tile puzzle in a reasonable time using 
-Manhattan distance heuristic, with the more memory efficient IDA* implementation 
-often generating the solution in less time than A*.
+An inversion is when one tile precedes a tile with a lower value, 
+more formally we have a pair of tiles (a, b) where a appears
+before b but a > b. We can determine if a given N-tile puzzle is solvable by factoring
+in the number of inversions it has using the following rules:
 
-### 15-tile Puzzle
+```
+1. If the grid width is odd, then the number of inversions for a solvable problem must be even. 
+
+2. If the grid width is even and the blank is on an even indexed row counting from the bottom, 
+(second from bottom, fourth from bottom etc.) then the number of inversions for a solvable problem must be odd. 
+
+3. If the grid width is even and the blank is on an odd indexed row counting from the bottom 
+(last, third from last etc.) then the number of inversions for a solvable problem must be even
+```
+
+### A *
+
+A* is an informed search algorithm, navigating a given search
+space by picking a path to the solution with the lowest cumulative cost 
+(informed by problem-specific knowledge). At each step in the search process 
+the algorithm picks the next action that will minimize the total cost. 
+This cost is determined by the function f(node) = g(node) + h(node); where g(node) 
+represents the number of actions taken so far (or the depth of the node in 
+the search tree) and h(node) is our heuristic function.  
+
+### Iterative Deepening A*
 
 Space complexity for A* is exponential in the branching factor 
-(4 possibilities max for an expanded node) requiring
-larger amount of memory the larger N, because of this the more
-memory efficient (linear in depth) IDA* is used for 15-tile
-puzzles. However, even this does not come up with a solution 
-every time (60% of test cases) (see TODO).
+(maintaining the frontier in a priority queue) requiring a
+larger amount of memory the larger N. Due to this fact the more
+memory efficient (linear in depth) IDA* is needed for 15-tile puzzles.
+
+### Heuristics
+Both heuristics used are problem specific.
+
+* Manhattan
+
+* Manhattan + Linear conflict 
 
 ## License
 
