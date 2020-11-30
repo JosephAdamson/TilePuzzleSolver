@@ -5,6 +5,9 @@ import java.util.Random;
 /**
  * Class used for puzzle generation and to gauge the
  * effectiveness of the implemented algorithms.
+ * 
+ * @author Joseph Adamson
+ * @version November 2020
  */
 public class Solver {
 
@@ -31,7 +34,7 @@ public class Solver {
     }
 
     /**
-     * Method randomly generates a solvable 8 tile puzzle.
+     * Method randomly generates a solvable N-tile puzzle.
      * 
      * @return TilePuzzleNode.
      */
@@ -87,9 +90,7 @@ public class Solver {
     public static void main(String[] args) {
         
         IterativeDeepeningAStar IDAStar = new IterativeDeepeningAStar(new ManhattanWithLinearConflict());
-        //TilePuzzleNode test = generatePuzzle(4);
-        TilePuzzleNode test = new TilePuzzleNode(System.getProperty("user.dir")
-                + "/src/test/testResources/puzzle1.txt");
+        TilePuzzleNode test = generatePuzzle(3);
         printPath(IDAStar.IterativeDeepeningSearch(test));
     }
 }

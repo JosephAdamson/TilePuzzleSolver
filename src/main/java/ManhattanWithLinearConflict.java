@@ -1,3 +1,7 @@
+/**
+ * @author Joseph Adamson
+ * @version November 2020
+ */
 public class ManhattanWithLinearConflict implements Heuristic{
 
     /**
