@@ -79,7 +79,7 @@ public class InversionCount {
         int inversionCount = 0;
         
         // Find sizes of the sub-arrays
-        int aSize = mid - left + 1;
+        int aSize = (mid - left) + 1;
         int bSize = right - mid;
 
         // Create temporary sub-arrays and copy data
@@ -117,7 +117,8 @@ public class InversionCount {
                 //
                 // If element i > element j than this holds true
                 // for all elements to the RIGHT of i, therefore each element
-                // after i adds an inverted pair to the count.
+                // after i adds an inverted pair to the count. (mid + 1)
+                // being the maximum number of inversions (the length of array a).
                 inversionCount += (mid + 1) - (left + i);
             }
         }

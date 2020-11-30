@@ -22,15 +22,15 @@ public class ManhattanDistance implements Heuristic {
     public int estimate(TilePuzzleNode node) {
         int count = 0;
 
-        for (int i = 0; i < node.getState().length; i++) {
-            for (int j = 0; j < node.getState()[i].length; j++) {
+        for (int i = 0; i < node.getDimensions(); i++) {
+            for (int j = 0; j < node.getDimensions(); j++) {
                 int val = node.getState()[i][j];
 
                 if (val != 0) {
 
                     // The index position of the value in the goal state.
-                    int goalRow = (val - 1) / node.getState().length;
-                    int goalCol = (val - 1) % node.getState().length;
+                    int goalRow = (val - 1) / node.getDimensions();
+                    int goalCol = (val - 1) % node.getDimensions();
 
                     count += (Math.abs(goalRow - i) + Math.abs(goalCol - j));
                 }

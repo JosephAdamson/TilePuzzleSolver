@@ -207,7 +207,6 @@ public class TilePuzzleNode {
         } else {
 
             // clone the current node to produce a new state
-            // and recompute Manhattan distance.
             int[][] cloned = cloneState(this.state);
             TilePuzzleNode newState = new TilePuzzleNode(cloned);
             newState.swapBlank(newState.blankIndexes[0], 
@@ -305,9 +304,6 @@ public class TilePuzzleNode {
     }
 
     /**
-     * Auto generated hashCode function allowing puzzle nodes to
-     * be stored in a hash map.
-     * 
      * @return a unique hash code generated using the attributes
      * of a given puzzle node.
      */

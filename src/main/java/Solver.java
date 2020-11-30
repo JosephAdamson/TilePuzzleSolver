@@ -35,17 +35,21 @@ public class Solver {
      * 
      * @return TilePuzzleNode.
      */
-    public static TilePuzzleNode generateEightTilePuzzle() {
+    public static TilePuzzleNode generatePuzzle(int dimensions) {
+        
+        if (dimensions < 3 || dimensions > 4) {
+            throw new IllegalArgumentException("Sorry puzzles must be either 3x3 or 4x4");
+        }
         
         // Create and populate array.
-        int[][] arr = new int[3][3];
+        int[][] arr = new int[dimensions][dimensions];
         int num = 0;
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 arr[i][j] = num++;
             }
         }
-        // Array populated array is actually already solvable; we
+        // Above populated array is actually already solvable; we
         // do an initial shuffle to avoid method outputting the
         // same state each time.
         shuffleBoard(arr);
@@ -78,5 +82,14 @@ public class Solver {
                     arr[xPos][yPos] = temp;
                 }
             }
+    }
+    
+    public static void main(String[] args) {
+        
+        IterativeDeepeningAStar IDAStar = new IterativeDeepeningAStar(new ManhattanWithLinearConflict());
+        //TilePuzzleNode test = generatePuzzle(4);
+        TilePuzzleNode test = new TilePuzzleNode(System.getProperty("user.dir")
+                + "/src/test/testResources/puzzle1.txt");
+        printPath(IDAStar.IterativeDeepeningSearch(test));
     }
 }
