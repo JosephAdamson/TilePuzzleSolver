@@ -21,7 +21,6 @@ more formally we have a pair of tiles (a, b) where a appears
 before b but a > b. We can determine if a given N-tile puzzle is solvable by factoring
 in the number of inversions it has using the following rules:
 
-```
 1. If the grid width is odd, then the number of inversions for a solvable problem must be even. 
 
 2. If the grid width is even and the blank is on an even indexed row counting from the bottom, 
@@ -29,7 +28,7 @@ in the number of inversions it has using the following rules:
 
 3. If the grid width is even and the blank is on an odd indexed row counting from the bottom 
 (last, third from last etc.) then the number of inversions for a solvable problem must be even
-```
+
 
 ### A *
 
