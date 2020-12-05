@@ -3,8 +3,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
