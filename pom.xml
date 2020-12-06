@@ -67,7 +67,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
-                    <version>4</version>
+                    <version>1.4.0</version>
                     <configuration>
                         <mainClass>Solver</mainClass>
                     </configuration>
