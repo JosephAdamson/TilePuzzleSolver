@@ -63,7 +63,7 @@
                     <version>2.22.2</version>
                 </plugin>
                 
-                <!-- Ability to run on the commandline -->
+                <!-- Ability to run on the commandline (mvn exec:java -Dexec.mainClass=Solver)-->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
