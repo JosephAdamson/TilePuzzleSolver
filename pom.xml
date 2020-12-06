@@ -16,20 +16,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
-    <build>
-
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        
-    </build>
-    
     <dependencies>
         <!-- junit 5 dependencies -->
         <dependency>
@@ -45,7 +31,31 @@
             <version>5.4.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Allows for backwards compatibility with junit 4 -->
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.4.0</version>
+            <scope>test</scope>
+        </dependency>
         
     </dependencies>
+
+    <build>
+
+        <pluginManagement>
+            
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+    </build>
     
 </project>
