@@ -61,6 +61,6 @@ Once compiled the main 'Solver' class can be run with `mvn exec:java -Dexec.main
 ## Future Additions
 With the current available heuristics the IDA* implementation
 still has difficulty with most randomly generated 15-tile puzzles; 
-limited to solving puzzles that require 50 moves. For better results
+limited to solving puzzles that require 50 moves or less. For better results
 a [pattern database](https://algorithmsinsight.wordpress.com/graph-theory-2/a-star-in-general/implementing-a-star-to-solve-n-puzzle/)
 could be implemented to replace Manhattan distance + linear conflict.
