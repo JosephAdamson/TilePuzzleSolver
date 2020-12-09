@@ -5,6 +5,8 @@ N-tile sliding puzzle problem, dealing here with puzzles where N is 8 and 15.
 eg.
 
 ```
+(blank tile represented with zero)
+
 Initial state                                 Goal state
 
     0 1 3      1 0 3      1 2 3      1 2 3      1 2 3
